@@ -1,0 +1,13 @@
+# Staroid uses skaffold to build container images and deploy Kubernetes manifests.
+apiVersion: skaffold/v2beta1
+kind: Config
+build:
+  artifacts:
+  - image: luna
+    context: .
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+      - k8s/luna.yaml

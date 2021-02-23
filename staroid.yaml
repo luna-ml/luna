@@ -1,0 +1,12 @@
+# This file instructs Staroid how to build and launch the project.
+# See https://docs.staroid.com/references/staroid_yaml.html for reference.
+apiVersion: beta/v1
+starRank:
+  rate: 1.0
+build:
+  skaffold:
+    file: skaffold.yaml
+ingress:
+- serviceName: luna
+  port: 5000
+deploy:

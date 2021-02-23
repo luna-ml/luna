@@ -42,3 +42,37 @@ See [CONTRIBUTING](https://github.com/luna-ml/luna/blob/main/CONTRIBUTING.rst) f
  - [ ] Initial implementation (2Q/2021)
  - [ ] Initial release 🎉
 
+
+## Development
+
+For development, you can run server and app manually.
+
+### Server
+
+Open a terminal, with a python 3.6 or later, run
+
+```
+pip install -r requirements.txt
+python luna/server.py
+```
+
+the server will run and listen http://localhost:5000
+
+### Webapp
+
+Open another terminal and run
+
+```
+cd web
+npm start
+```
+
+and you can browse http://localhost:3000
+
+### Kubernetes
+
+To test deployment on Kubernetes locally (with [Minikube](https://minikube.sigs.k8s.io/)), run
+
+```
+skaffold dev --port-forward
+```

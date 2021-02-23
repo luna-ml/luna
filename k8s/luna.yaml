@@ -1,0 +1,39 @@
+# Kubernetes manifests for label studio
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: luna
+spec:
+  replicas: 1
+  strategy:
+    type: "Recreate"
+  selector:
+    matchLabels:
+      app: luna
+  template:
+    metadata:
+      labels:
+        app: luna
+    spec:
+      containers:
+      - name: luna
+        image: luna
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          timeoutSeconds: 2
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: luna
+spec:
+  ports:
+  - name: http
+    port: 5000
+  selector:
+    app: luna
