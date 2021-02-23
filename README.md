@@ -3,6 +3,8 @@
   <img width="160px" src="https://user-images.githubusercontent.com/1540981/108800725-c77ec080-7548-11eb-9013-b28ee4ee4879.png" />
   <br /><br />
   Luna | 달님 | 月
+  <br />
+  <a href="https://staroid.com/demo/GITHUB/luna-ml/luna/main" target="_blank">Live demo</a>
 </p>
 <br />
 <br />
@@ -23,6 +25,37 @@ Here's preview of the UI.
 
 
 Visit [project wiki](https://github.com/luna-ml/luna/wiki) to learn more about the project and idea behind of it.
+
+## Getting started
+
+### Cloud
+Click the button below to run private instance of Luna ML leaderboard on the cloud.
+
+[![Run](https://staroid.com/api/run/button.svg)](https://staroid.com/api/run)
+
+### Docker
+
+Build included `Dockerfile` and run.
+
+```
+# build docker image
+docker build -t luna .
+
+# run container based on the image
+docker run -it -p5000:5000 luna
+```
+and browse http://localhost:5000
+
+### Kubernetes
+
+With [skaffold](https://skaffold.dev), you can build and deploy the project to your own Kubernetes cluster.
+
+```
+# build container and deploy to Kubernetes cluster
+skaffold run
+```
+
+
 
 ## Getting involved
 
