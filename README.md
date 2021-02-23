@@ -22,22 +22,23 @@ Here's preview of the UI.
 ![](https://user-images.githubusercontent.com/1540981/108799967-afa63d00-7546-11eb-8123-c6ce016fc256.png)
 
 
-Visit [project wiki](https://github.com/luna-ml-project/luna/wiki) to learn more about the project and idea behind of it.
+Visit [project wiki](https://github.com/luna-ml/luna/wiki) to learn more about the project and idea behind of it.
 
 ## Getting involved
 
 Luna ML project is an open-source project. You're welcomed ❤️ to be involved in any area of the project, from design, code, to sharing feedback and ideas!
 
- - [Issues](https://github.com/luna-ml-project/luna/issues) - Feel free to create any questions, discussions, bug report.
- - [Pull requests](https://github.com/luna-ml-project/luna/pulls) - Contribute code. Or just start review code from others. 
- - [Wiki](https://github.com/luna-ml-project/luna/wiki) - Project roadmap, design, goal. Please add your thought here.
+ - [Issues](https://github.com/luna-ml/luna/issues) - Feel free to create any questions, discussions, bug report.
+ - [Pull requests](https://github.com/luna-ml/luna/pulls) - Contribute code. Or just start review code from others. 
+ - [Wiki](https://github.com/luna-ml/luna/wiki) - Project roadmap, design, goal. Please add your thought here.
 
+See [CONTRIBUTING](https://github.com/luna-ml/luna/blob/main/CONTRIBUTING.rst) for code contribution.
 
 ## Current status
 
  - [ ] Design <--- Work in progress.
-   - [Design docs (wiki)](https://github.com/luna-ml-project/luna/wiki)
-   - Key design discussion - [Problem definition](https://github.com/luna-ml-project/luna/issues/1), [Scoring system](https://github.com/luna-ml-project/luna/issues/2)
+   - [Design docs (wiki)](https://github.com/luna-ml/luna/wiki)
+   - Key design discussion - [Problem definition](https://github.com/luna-ml/luna/issues/1), [Scoring system](https://github.com/luna-ml/luna/issues/2)
  - [ ] Initial implementation (2Q/2021)
  - [ ] Initial release 🎉
 
