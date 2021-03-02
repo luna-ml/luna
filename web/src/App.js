@@ -1,6 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles'
+import { observer } from "mobx-react"
+import healthInfo from './observers/health'
 import Home from './routes/home'
+
 
 const useStyles = makeStyles((theme) => ({
   body: {
@@ -15,9 +18,9 @@ function App() {
   const classes = useStyles();
   return (
     <div className={classes.body}>
-      <Home />
+      <Home healthInfo={healthInfo} />
     </div>
   );
 }
 
-export default App;
+export default observer(App);

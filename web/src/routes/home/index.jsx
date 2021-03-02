@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles'
+import { observer } from "mobx-react"
 import ProjectListItem from '../../components/projectListItem'
 
 import {
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const Home = () => {
+const Home = (healthInfo) => {
   const classes = useStyles();
 
   const mockProjectListData = [
@@ -50,6 +51,7 @@ const Home = () => {
       <Box flexGrow={1}>
       </Box>
       <Box>
+        Health {`${healthInfo.healthy}`}
         <TextField
           label="Search"
           type="search"
@@ -79,4 +81,4 @@ const Home = () => {
   </div>
 }
 
-export default Home
+export default observer(Home)
