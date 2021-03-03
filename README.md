@@ -11,6 +11,8 @@
 
 # Luna ML project
 
+![](https://github.com/luna-ml/luna/actions/workflows/test.yml/badge.svg?branch=main)
+
 Luna project provides a leaderboard for ML models, and more to enable faster ML model development iterations. ML leaderboard keeps metadata and metrics of your ML models and their scores. So your team can find problems to work on and get informations about how they have been evolved. Planned components are
 
  - Leaderboard: List ML models based on score, for each project
