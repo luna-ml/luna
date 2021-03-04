@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles'
 import { observer } from "mobx-react"
 import healthInfo from './observers/health'
+import projectInfo from './observers/project'
 import Home from './routes/home'
 
 
@@ -18,7 +19,10 @@ function App() {
   const classes = useStyles();
   return (
     <div className={classes.body}>
-      <Home healthInfo={healthInfo} />
+      <Home
+        healthInfo={healthInfo}
+        projectInfo={projectInfo}
+      />
     </div>
   );
 }

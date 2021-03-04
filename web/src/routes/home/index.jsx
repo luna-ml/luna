@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles'
 import { observer } from "mobx-react"
 import ProjectListItem from '../../components/projectListItem'
@@ -22,21 +22,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const Home = (healthInfo) => {
+const Home = (props) => {
+  const {
+    /*healthInfo,*/
+    projectInfo
+  } = props
+
   const classes = useStyles();
 
-  const mockProjectListData = [
-    {
-      id: "0112",
-      name: "Optimize express pickup route",
-      description: "Find the best route to pick up multiple passengers in a single trip"
-    },
-    {
-      id: "0113",
-      name: "Minimize customer waiting time",
-      description: "Minimize waiting time between destination set from app and a pickup"
-    }
-  ]
+  useEffect(() => {
+    projectInfo.list()
+  }, [projectInfo])
 
   return <div className={classes.page}>
     <Box className={classes.header} display="flex" alignItems="center">
@@ -51,7 +47,6 @@ const Home = (healthInfo) => {
       <Box flexGrow={1}>
       </Box>
       <Box>
-        Health {`${healthInfo.healthy}`}
         <TextField
           label="Search"
           type="search"
@@ -70,7 +65,7 @@ const Home = (healthInfo) => {
       </Button>
     </div>
     <div>
-      {mockProjectListData.map(p => {
+      {projectInfo.projectList.map(p => {
         return <ProjectListItem
           key={p.id}
           name={p.name}

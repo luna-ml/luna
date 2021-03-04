@@ -1,8 +1,9 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 const DEV_MODE = (process.env.NODE_ENV === "development")
 
-const baseApiUrl = "http://localhost:5000"
-
+const baseApiUrl = DEV_MODE
+  ? "http://localhost:5000"
+  : window.location.href.replace(/\/$/, "") // something like https://domain.com
 
 const theme = createMuiTheme({
   palette: {
