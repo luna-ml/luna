@@ -57,6 +57,89 @@ With [skaffold](https://skaffold.dev), you can build and deploy the project to y
 skaffold run
 ```
 
+## Create a new project
+
+Each ML problem is encapsulated by a "project" in Luna ML.
+For example, "Handwritten digit recognition" can be a problem to solve and a project can be created for it. To create a project, followings need to be defined
+
+ - Description of the project (Using either Markdown or Ipynb)
+ - Scorer (Instruction for machines to score submitted models)
+
+And you can define them in a git repository.
+
+1. Create a git repository
+2. Create a `luna.yaml` file
+
+   ```yaml
+   version: v1
+   kind: luna-ml/project
+   models:
+     path:             # relative path to model dirs
+   evaluator:
+     # evaluator evaluate a model at a time
+     dockerfile:       # relative path to the dockerfile. when defined, 'image' will be ignored
+     image:            # docker image
+     command:          # command to evaluate
+     modelPath:        # submitted model to evaluate will be mounted in this path
+     evalOutputPath:   # 'command' should generate evaluate results in this path. Results can include any files, such as text, json, video, image, and binary files. When README.md or README.ipynb are generated, they'll be displayed on GUI.
+   scorer:
+     # scorer scores multiple evaluation output at a time
+     dockerfile:       # relative path to the dockerfile. when defined, 'image' will be ignored
+     image:            # docker image
+     command:          # command to score
+     evalOutputFilter: # select file name pattern from eval output path for scoring.
+     scoreFieldName:   # default scoring field name from score output
+     sort:             # 'desc' or 'asc'
+     evalListPath:     # json file that contains information of the evaluation results to score. The json file format is
+                       # {
+                       #    evalResults: [
+                       #      {
+                       #        id: <string eval id>,
+                       #        outputPath: <string eval output path>
+                       #      }
+                       #    ]
+                       # }
+     scoreListPath:    # 'command' should generate a json file in this path that contains score of each evaluation result. Format
+                       # {
+                       #   scores: [
+                       #     {
+                       #       id: <string eval id>,
+                       #       data: {
+                       #         score: <number>,
+                       #         another_field: <number>,
+                       #         ...
+                       #       }
+                       #     }
+                       #   ]
+                       # }
+   ```
+
+3. Create a `README.md` or `README.ipynb` with the description of your project. They need to be in the same directory with the `luna.yaml`
+
+4. Create a new project from Luna ML GUI and configure the GitHub actions to connect
+
+## Submit model
+
+A model can be submitted by creating dir and placing necessary files. The directory should have a `luna-model.yaml` file to indicate this is a dir that hold the model to be evaluated.
+
+```yaml
+version: v1
+kind: luna-ml/model
+setupCommands: # setup commands to run before evaluation. e.g. pip install ...
+
+```
+
+Submitted model will be automatically evaluated and scored.
+
+### Evaluate and score model locally
+
+Before submit, you can evaluate and score your model locally.
+
+```
+luna-ml eval -p <path to luna.ml in your project> <path to your model dir>
+luna-ml score -p <path to luna.ml in your project> <path to your model dir>
+```
+
 
 
 ## Getting involved
