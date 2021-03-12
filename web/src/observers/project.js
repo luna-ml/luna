@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx"
-import axios from 'axios'
 import {baseApiUrl} from '../configs'
+import socketio from "socket.io-client"
 
 class ProjectInfo {
   constructor() {
@@ -8,17 +8,23 @@ class ProjectInfo {
     makeAutoObservable(this)
   }
 
-  list() {
-    axios.get(`${baseApiUrl}/projects`)
-      .then((resp) => {
-        this.projectList = resp.data
-      })
-      .catch(() => {
-        this.projectList = []
-      })
+  update(projectList) {
+    this.projectList = projectList
   }
-}
 
+}
 const projectInfo = new ProjectInfo()
+
+const socket = socketio(`${baseApiUrl}/project`)
+
+/*
+socket.on("connection", (socket) => {
+})
+*/
+
+socket.on("project_list", (data) => {
+  projectInfo.update(data)
+})
+
 
 export default projectInfo

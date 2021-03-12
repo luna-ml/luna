@@ -23,4 +23,4 @@ COPY --chown=luna:luna luna /home/luna/server
 COPY --chown=luna:luna requirements.txt /home/luna
 RUN pip install -r requirements.txt
 
-CMD [ "bash", "-c", "python /home/luna/server/server.py" ]
+CMD [ "bash", "-c", "python /home/luna/server/main.py" ]

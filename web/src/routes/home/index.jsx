@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles'
 import { observer } from "mobx-react"
 import ProjectListItem from '../../components/projectListItem'
@@ -29,10 +29,6 @@ const Home = (props) => {
   } = props
 
   const classes = useStyles();
-
-  useEffect(() => {
-    projectInfo.list()
-  }, [projectInfo])
 
   return <div className={classes.page}>
     <Box className={classes.header} display="flex" alignItems="center">

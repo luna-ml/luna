@@ -27,6 +27,7 @@ jobs:
     - name: Test
       run: |
         python -m unittest
+      working-directory: luna
   web:
     runs-on: ubuntu-latest
     steps:
