@@ -11,6 +11,8 @@ webapp_path = os.getenv("WEBAPP_PATH", "../web/build")
 app = Flask(__name__,
             static_url_path='',
             static_folder=webapp_path)
+app.config.from_envvar('LUNA_CONFIG')
+
 cors = CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 db = SQLAlchemy(app)

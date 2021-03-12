@@ -28,6 +28,9 @@ jobs:
       run: |
         python -m unittest
       working-directory: luna
+      env:
+        LUNA_CONFIG: ../../config_test.cfg
+
   web:
     runs-on: ubuntu-latest
     steps:

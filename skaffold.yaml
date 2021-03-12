@@ -10,4 +10,5 @@ build:
 deploy:
   kubectl:
     manifests:
+      - k8s/config.yaml
       - k8s/luna.yaml

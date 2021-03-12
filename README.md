@@ -154,10 +154,10 @@ See [CONTRIBUTING](https://github.com/luna-ml/luna/blob/main/CONTRIBUTING.rst) f
 
 ## Current status
 
- - [ ] Design <--- Work in progress.
+ - [x] Design
    - [Design docs (wiki)](https://github.com/luna-ml/luna/wiki)
    - Key design discussion - [Problem definition](https://github.com/luna-ml/luna/issues/1), [Scoring system](https://github.com/luna-ml/luna/issues/2)
- - [ ] Initial implementation (2Q/2021)
+ - [ ] Initial implementation (2Q/2021)  <--- Work in progress.
  - [ ] Initial release 🎉
 
 
@@ -171,7 +171,7 @@ Open a terminal, with a python 3.6 or later, run
 
 ```
 pip install -r requirements.txt
-python luna/server.py
+./run_dev_server.sh
 ```
 
 the server will run and listen http://localhost:5000

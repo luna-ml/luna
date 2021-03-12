@@ -21,7 +21,13 @@ spec:
         command:
         - bash
         - -c
-        - PYTHONPATH=luna FLASK_APP=luna/main.py flask db upgrade 
+        - PYTHONPATH=luna FLASK_APP=luna/main.py flask db upgrade
+        env:
+        - name: LUNA_CONFIG
+          value: /home/luna/config/config.cfg
+        volumeMounts:
+        - name: luna-config-volume
+          mountPath: /home/luna/config
       containers:
       - name: luna
         image: luna
@@ -37,6 +43,16 @@ spec:
             path: /health
             port: 5000
           timeoutSeconds: 2
+        env:
+        - name: LUNA_CONFIG
+          value: /home/luna/config/config.cfg
+        volumeMounts:
+        - name: luna-config-volume
+          mountPath: /home/luna/config
+      volumes:              
+      - name: luna-config-volume
+        configMap:
+          name: luna-config
 ---
 kind: Service
 apiVersion: v1
