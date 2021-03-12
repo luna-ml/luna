@@ -1,6 +1,9 @@
 from flask import Flask, current_app, make_response, jsonify
 from flask_cors import CORS
 from flask_socketio import SocketIO
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+
 import os
 
 webapp_path = os.getenv("WEBAPP_PATH", "../web/build")
@@ -10,6 +13,8 @@ app = Flask(__name__,
             static_folder=webapp_path)
 cors = CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 @app.route('/health')
 def health():

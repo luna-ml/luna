@@ -15,9 +15,20 @@ spec:
       labels:
         app: luna
     spec:
+      initContainers:
+      - name: db-upgrade
+        image: luna
+        command:
+        - bash
+        - -c
+        - PYTHONPATH=luna FLASK_APP=luna/main.py flask db upgrade 
       containers:
       - name: luna
         image: luna
+        command:
+        - bash
+        - -c
+        - python luna/main.py
         ports:
         - containerPort: 5000
           protocol: TCP

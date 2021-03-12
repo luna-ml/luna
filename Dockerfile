@@ -19,8 +19,13 @@ COPY --from=builder --chown=luna:luna /web/build /home/luna/web
 ENV WEBAPP_PATH=/home/luna/web
 
 # server
-COPY --chown=luna:luna luna /home/luna/server
+COPY --chown=luna:luna luna /home/luna/luna
+COPY --chown=luna:luna migrations /home/luna/migrations
 COPY --chown=luna:luna requirements.txt /home/luna
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt && \
+    mkdir -p /home/luna/migrations/versions
 
-CMD [ "bash", "-c", "python /home/luna/server/main.py" ]
+# add bin dir of pip
+ENV PATH="/home/luna/.local/bin:${PATH}"
+
+CMD [ "bash", "-c", "PYTHONPATH=luna FLASK_APP=luna/main.py flask db upgrade && python luna/main.py" ]

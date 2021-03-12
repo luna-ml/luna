@@ -18,7 +18,7 @@ dummy_projects = [
 class ProjectList(Namespace):
     def on_connect(self):
         emit(PROJECT_LIST, dummy_projects)
-        # print("On connect")
+        # print("On connect") 
         pass
 
     def on_disconnect(self):
